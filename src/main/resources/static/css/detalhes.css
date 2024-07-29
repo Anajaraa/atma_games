@@ -1,0 +1,218 @@
+﻿body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para o header */
+header {
+    margin-bottom: 20px; /* Adiciona uma margem inferior ao header para separar do conteúdo principal */
+}
+
+/* Estilo para o logo */
+.navbar-brand img {
+    margin-right: 20px; /* Adiciona uma margem à direita do logo */
+}
+
+/* Estilo para a navegação */
+.navbar-nav {
+    margin-left: auto; /* Garante que a navegação se mova para o lado direito do container */
+}
+
+.navbar-toggler {
+    margin-left: 20px; /* Adiciona uma margem esquerda ao botão de alternância da navbar para garantir que não fique muito próximo do logo */
+}
+
+nav .navbar-nav .nav-item {
+    margin-right: 15px; /* Aumenta o espaço entre os itens da navegação */
+}
+
+nav .navbar-nav .nav-link {
+    border-radius: 4px; /* Adiciona border-radius aos botões */
+    padding: 10px 15px; /* Ajusta o padding dos botões */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Adiciona transição suave */
+}
+
+nav .navbar-nav .nav-link:hover {
+    background-color: #03cc5e; /* Cor de fundo ao passar o mouse */
+    color: #121212; /* Cor do texto ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adiciona uma sombra ao passar o mouse */
+}
+
+/* Estilo para o main */
+.section-title, h2 {
+    color: white;
+    margin-bottom: 40px;
+}
+
+main .banner {
+    margin-bottom: 40px;
+}
+
+/* Container principal para o layout */
+#main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: linear-gradient(145deg, #1f1f1f, #2c2c2c);
+    border-radius: 10px;
+    margin: 20px;
+}
+
+/* Estilo para o contêiner de detalhes do jogo */
+#game-details {
+    flex: 3;
+    max-width: 70%;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#game-details img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#game-details h2 {
+    color: #03cc5e;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+#game-details p {
+    color: #ddd;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+#game-details button {
+    background-color: #03cc5e;
+    border: none;
+    color: #fff;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#game-details button:hover {
+    background-color: #028a3b;
+}
+
+/* Estilo para a seção de jogos relacionados */
+#related-games {
+    flex: 1;
+    max-width: 70%;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto; /* Adiciona rolagem se necessário */
+   
+}
+
+.titulo-relacionados {
+    margin-top: 70px;
+    color: #03cc5e;
+}
+
+#related-games h3 {
+    color: #03cc5e;
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+#related-games .list-group-item {
+    display: flex;
+    align-items: center;
+    background: #2c2c2c;
+    border: none;
+    color: #fff;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 15px;
+    transition: background 0.3s ease;
+}
+
+#related-games .list-group-item:hover {
+    background: #03cc5e;
+}
+
+#related-games img {
+    width: 120px; /* Aumenta o tamanho das imagens */
+    height: 120px; /* Mantém o tamanho das imagens consistente */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+#related-games img:hover {
+    transform: scale(1.1); /* Aumenta o efeito de zoom ao passar o mouse */
+}
+
+#related-games .list-group-item p {
+    margin: 0;
+    font-size: 1.1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+footer {
+    border-top: 1px solid #333;
+    background-color: #1e1e1e;
+    padding: 40px 20px;
+    position: fixed;
+    bottom: 0;  
+    width: 100%;
+    text-align: center;
+}
+
+footer .col-md-4 {
+    margin-bottom: 20px;
+}
+
+footer .img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.modal .close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal .close-btn:hover,
+.modal .close-btn:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+
+footer {
+    background-color: #121212;
+    color: #fff;
+    padding: 40px 20px;
+}
+
+footer .col-md-4 {
+    margin-bottom: 20px;
+}
+
+footer .img-fluid {
+    max-width: 100%;
+    height: auto;
+}

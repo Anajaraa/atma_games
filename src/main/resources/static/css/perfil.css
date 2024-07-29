@@ -1,0 +1,260 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #000000;
+    background-image: 
+        radial-gradient(at 47% 33%, hsl(165, 24%, 90%) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(218.00, 39%, 11%) 0, transparent 55%);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 20px auto;
+   
+    padding: 30px;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(2, 116, 91, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border: 1px solid rgba(255, 255, 255, 0.062);
+}
+
+.profile-img-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 5px solid #03cc5e;
+    cursor: pointer;
+}
+
+.profile-container h2 {
+    text-align: center;
+    color: #03cc5e;
+    margin-bottom: 20px;
+}
+
+.profile-container p {
+    font-size: 18px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.profile-container h3 {
+    color: #fff;
+    margin-top: 20px;
+}
+
+.profile-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.profile-container ul li {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.profile-container ul li:last-child {
+    border-bottom: none;
+}
+
+.profile-container button {
+    background-color: #03cc5e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 10px auto;
+}
+
+.profile-container button:hover {
+    background-color: #028d3e;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    font-size: 16px;
+    resize: none;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.modal-content h2 {
+    color: #03cc5e;
+}
+
+.modal .close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal .close-btn:hover,
+.modal .close-btn:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Estilo para o histórico de compras */
+/* Estilo para o histórico de compras */
+.profile-container ul#purchaseHistory {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.profile-container ul#purchaseHistory li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.profile-container ul#purchaseHistory li:last-child {
+    border-bottom: none;
+}
+
+.profile-container ul#purchaseHistory img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.profile-container ul#purchaseHistory .game-info {
+    flex: 1;
+}
+
+.profile-container ul#purchaseHistory .game-info h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #03cc5e;
+}
+
+.profile-container ul#purchaseHistory .game-info p {
+    margin: 2px 0;
+    font-size: 14px;
+}
+
+.profile-container ul#purchaseHistory .game-info .price {
+    font-weight: bold;
+    color: #f39c12;
+}
+
+
+input[type="text"], input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #1f1f1f;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+footer {
+    padding: 40px 0;
+}
+
+footer h5 {
+    color: #fff;
+}
+
+.footer-social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.footer-social-icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-social-icons a:hover img {
+    filter: brightness(0.8);
+}
+
+#userIcon {
+    cursor: pointer;
+}
+
+#userIcon:hover {
+    opacity: 0.8;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 20px;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-container {
+        padding: 10px;
+    }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+}
