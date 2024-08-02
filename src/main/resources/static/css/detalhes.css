@@ -1,4 +1,5 @@
-﻿body {
+﻿/* Estilo geral do body */
+body {
     font-family: 'Raleway', sans-serif;
     background-color: #121212;
     color: #fff;
@@ -8,185 +9,200 @@
 
 /* Estilo para o header */
 header {
-    margin-bottom: 20px; /* Adiciona uma margem inferior ao header para separar do conteúdo principal */
+    margin-bottom: 20px;
 }
 
 /* Estilo para o logo */
 .navbar-brand img {
-    margin-right: 20px; /* Adiciona uma margem à direita do logo */
+    margin-right: 20px;
 }
 
 /* Estilo para a navegação */
 .navbar-nav {
-    margin-left: auto; /* Garante que a navegação se mova para o lado direito do container */
+    margin-left: auto;
 }
 
 .navbar-toggler {
-    margin-left: 20px; /* Adiciona uma margem esquerda ao botão de alternância da navbar para garantir que não fique muito próximo do logo */
+    margin-left: 20px;
 }
 
 nav .navbar-nav .nav-item {
-    margin-right: 15px; /* Aumenta o espaço entre os itens da navegação */
+    margin-right: 15px;
 }
 
 nav .navbar-nav .nav-link {
-    border-radius: 4px; /* Adiciona border-radius aos botões */
-    padding: 10px 15px; /* Ajusta o padding dos botões */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Adiciona transição suave */
+    border-radius: 4px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 nav .navbar-nav .nav-link:hover {
-    background-color: #03cc5e; /* Cor de fundo ao passar o mouse */
-    color: #121212; /* Cor do texto ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adiciona uma sombra ao passar o mouse */
+    background-color: #03cc5e;
+    color: #121212;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* Estilo para o main */
-.section-title, h2 {
-    color: white;
-    margin-bottom: 40px;
-}
-
-main .banner {
-    margin-bottom: 40px;
-}
-
-/* Container principal para o layout */
-#main-container {
-    display: flex;
-    justify-content: space-between;
+main {
     padding: 20px;
-    background: linear-gradient(145deg, #1f1f1f, #2c2c2c);
-    border-radius: 10px;
-    margin: 20px;
+    background-color: #1e1e1e;
 }
 
-/* Estilo para o contêiner de detalhes do jogo */
+/* Estilo geral para o container principal */
+main {
+    padding: 20px;
+    background-color: #121212;
+}
+
+/* Container que alinha detalhes do jogo e outros jogos */
+.main-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* Estilo para a seção de detalhes do jogo */
 #game-details {
-    flex: 3;
-    max-width: 70%;
-    background: #1a1a1a;
+    background-color: #1a1a1a;
+    border-radius: 10px;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-#game-details img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* Garante que o conteúdo não ultrapasse o container */
 }
 
 #game-details h2 {
+    font-size: 2rem;
     color: #03cc5e;
     margin-bottom: 20px;
-    font-size: 2.5em;
+}
+
+#game-details img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
 
 #game-details p {
-    color: #ddd;
-    font-size: 1.2em;
-    margin-bottom: 15px;
+    font-size: 1rem;
+    margin-bottom: 10px;
 }
 
 #game-details button {
     background-color: #03cc5e;
-    border: none;
     color: #fff;
-    padding: 15px 25px;
-    font-size: 1.2em;
+    border: none;
+    padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #game-details button:hover {
     background-color: #028a3b;
+    transform: scale(1.05); /* Adiciona um leve efeito de zoom ao passar o mouse */
 }
 
 /* Estilo para a seção de jogos relacionados */
 #related-games {
-    flex: 1;
-    max-width: 70%;
-    background: #1a1a1a;
-    padding: 20px;
+    background-color: #1a1a1a;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    overflow-y: auto; /* Adiciona rolagem se necessário */
-   
+    padding: 20px;
+    color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow-y: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
+    max-height: 600px; /* Define uma altura máxima */
 }
 
 .titulo-relacionados {
-    margin-top: 70px;
+    font-size: 1.5rem;
     color: #03cc5e;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
-#related-games h3 {
-    color: #03cc5e;
-    margin-bottom: 15px;
-    font-size: 2em;
+#related-games .list-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-#related-games .list-group-item {
+.list-group-item {
     display: flex;
     align-items: center;
-    background: #2c2c2c;
-    border: none;
-    color: #fff;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    overflow: hidden;
-    padding: 15px;
-    transition: background 0.3s ease;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    padding: 10px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-#related-games .list-group-item:hover {
-    background: #03cc5e;
+.list-group-item:hover {
+    background-color: #03cc5e;
+    color: #121212;
+    transform: scale(1.03); /* Adiciona um leve efeito de zoom ao passar o mouse */
 }
 
-#related-games img {
-    width: 120px; /* Aumenta o tamanho das imagens */
-    height: 120px; /* Mantém o tamanho das imagens consistente */
+.list-group-item img {
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     border-radius: 5px;
     margin-right: 15px;
-    transition: transform 0.3s ease;
 }
 
-#related-games img:hover {
-    transform: scale(1.1); /* Aumenta o efeito de zoom ao passar o mouse */
-}
-
-#related-games .list-group-item p {
+.list-group-item p {
     margin: 0;
-    font-size: 1.1em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 1rem;
 }
 
+/* Estilo para o botão de compra */
+#buy-now-button {
+    margin-left: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#buy-now-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Adiciona um leve efeito de zoom ao passar o mouse */
+}
+
+/* Estilo para o footer */
 footer {
-    border-top: 1px solid #333;
-    background-color: #1e1e1e;
-    padding: 40px 20px;
-    position: fixed;
-    bottom: 0;  
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+footer h5 {
+    margin-top: 0;
+    color: #03cc5e;
+}
+
+.footer-social-icons img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+img.img-fluid {
     width: 100%;
-    text-align: center;
-}
-
-footer .col-md-4 {
-    margin-bottom: 20px;
-}
-
-footer .img-fluid {
-    max-width: 100%;
     height: auto;
 }
 
-
+/* Modal */
 .modal .close-btn {
     color: #aaa;
     float: right;
@@ -199,20 +215,4 @@ footer .img-fluid {
     color: #fff;
     text-decoration: none;
     cursor: pointer;
-}
-  
-
-footer {
-    background-color: #121212;
-    color: #fff;
-    padding: 40px 20px;
-}
-
-footer .col-md-4 {
-    margin-bottom: 20px;
-}
-
-footer .img-fluid {
-    max-width: 100%;
-    height: auto;
 }

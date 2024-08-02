@@ -26,9 +26,9 @@ public class WebController {
         return "detalhes";
     }
 
-    @GetMapping("/produtos")
-    public String produtos() {
-        return "produtos";
+    @GetMapping("/jogos")
+    public String jogos() {
+        return "jogos";
     }
 
     @GetMapping("/adm")
@@ -44,5 +44,10 @@ public class WebController {
     @GetMapping("/carrinho")
     public String carrinho() {
         return "carrinho";
+    }
+
+    @GetMapping("/pagamentoSucesso")
+    public String pagamentoSucesso() {
+        return "pagamentoSucesso";
     }
 }
