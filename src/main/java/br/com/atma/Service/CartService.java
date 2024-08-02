@@ -62,15 +62,17 @@ public class CartService {
         return convertToDTO(cart);
     }
 
-    private CartDTO convertToDTO(Cart cart) {
+    public CartDTO convertToDTO(Cart cart) {
         List<CartItemDTO> items = cart.getItems().stream().map(item -> {
             Game game = item.getGame();
             return new CartItemDTO(item.getId(), game.getId(), game.getNameGame(), BigDecimal.valueOf(game.getPrice()), game.getGameImage(), item.getQuantity());
         }).collect(Collectors.toList());
-        return new CartDTO(cart.getId(), cart.getUserProfile().getId(), items);
-    }
+        return new CartDTO(cart.getId(), cart.getUserProfile().getId(),items);
+        }
 
-    private Cart createCart(Long userProfileId) {
+
+    @Transactional
+    public Cart createCart(Long userProfileId) {
         Cart cart = new Cart();
         UserProfile userProfile = userProfileRepository.findById(userProfileId).orElseThrow(() -> new RuntimeException("Usuário não encontrado com ID " + userProfileId));
         cart.setUserProfile(userProfile);
@@ -88,6 +90,15 @@ public class CartService {
         return convertToDTO(cart);
     }
 
+    @Transactional
+    public void deleteCart(Long userProfileId) {
+        Cart cart = cartRepository.findByUserProfileId(userProfileId)
+                .orElseThrow(() -> new RuntimeException("Carrinho não encontrado para o usuário com ID " + userProfileId));
+
+        cartRepository.delete(cart);
+    }
+
+
     public String createPreference(Long userProfileId) throws MPException, MPApiException {
         MercadoPagoConfig.setAccessToken("TEST-6505548037495608-072312-ad4842cee5c8b45ca7ece5bbafb46314-838073714");
 
@@ -95,7 +106,6 @@ public class CartService {
 
         List<PreferenceItemRequest> items = cart.getItems().stream().map(cartItem -> {
             Game game = cartItem.getGame();
-            savePurchaseHistory(cartItem, userProfileId); // Salva o histórico de compra antes de criar a preferência
             return PreferenceItemRequest.builder()
                     .id(game.getId().toString())
                     .title(game.getNameGame())
@@ -111,8 +121,8 @@ public class CartService {
         PreferenceRequest preferenceRequest = PreferenceRequest.builder()
                 .items(items)
                 .backUrls(PreferenceBackUrlsRequest.builder()
-                        .success("http://localhost:8080/payment/success")
-                        .failure("http://localhost:8080/payment/failure")
+                        .success("http://localhost:8080/pagamentoSucesso")
+                        .failure("http://localhost:8080/carrinho")
                         .pending("http://localhost:8080/payment/pending")
                         .build())
                 .autoReturn("approved")
@@ -124,15 +134,30 @@ public class CartService {
         return preference.getInitPoint();
     }
 
-    private void savePurchaseHistory(CartItem cartItem, Long userProfileId) {
-        PurchaseHistory purchaseHistory = new PurchaseHistory();
-        UserProfile userProfile = userProfileRepository.findById(userProfileId).orElseThrow(() -> new RuntimeException("Usuário não encontrado com ID " + userProfileId));
-        purchaseHistory.setUserProfile(userProfile);
-        purchaseHistory.setGameId(cartItem.getGame().getId());
-        purchaseHistory.setGameName(cartItem.getGame().getNameGame());
-        purchaseHistory.setGamePrice(BigDecimal.valueOf(cartItem.getGame().getPrice()));
-        purchaseHistory.setGameImage(cartItem.getGame().getGameImage());
-        purchaseHistory.setQuantity(cartItem.getQuantity());
-        purchaseHistoryService.save(purchaseHistory);
+    @Transactional
+    public void clearCart(Long userProfileId) {
+        Cart cart = cartRepository.findByUserProfileId(userProfileId)
+                .orElseThrow(() -> new RuntimeException("Carrinho não encontrado para o usuário com ID " + userProfileId));
+
+        cartItemRepository.deleteAll(cart.getItems());
+        cartItemRepository.flush();
+
+        cart.getItems().clear();
+        cartRepository.save(cart);
+    }
+
+    public void savePurchaseHistory(Long userProfileId) {
+        Cart cart = cartRepository.findByUserProfileId(userProfileId).orElseThrow(() -> new RuntimeException("Carrinho não encontrado para o usuário com ID " + userProfileId));
+        for (CartItem cartItem : cart.getItems()) {
+            PurchaseHistory purchaseHistory = new PurchaseHistory();
+            UserProfile userProfile = userProfileRepository.findById(userProfileId).orElseThrow(() -> new RuntimeException("Usuário não encontrado com ID " + userProfileId));
+            purchaseHistory.setUserProfile(userProfile);
+            purchaseHistory.setGameId(cartItem.getGame().getId());
+            purchaseHistory.setGameName(cartItem.getGame().getNameGame());
+            purchaseHistory.setGamePrice(BigDecimal.valueOf(cartItem.getGame().getPrice()));
+            purchaseHistory.setGameImage(cartItem.getGame().getGameImage());
+            purchaseHistory.setQuantity(cartItem.getQuantity());
+            purchaseHistoryService.save(purchaseHistory);
+        }
     }
 }
